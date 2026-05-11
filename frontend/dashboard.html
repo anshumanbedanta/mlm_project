@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus MLM - Core System Dashboard</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Ionicons for High-Quality Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* === Variables & Reset === */
+        :root {
+            --bg-main: #0b0f19;
+            --panel-bg: rgba(20, 27, 45, 0.65);
+            --panel-border: rgba(255, 255, 255, 0.08);
+
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --secondary: #ec4899;
+
+            --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.3);
+            --warning: #f59e0b;
+
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* === Premium Background Effects === */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -15%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            filter: blur(90px);
+            z-index: -1;
+            animation: pulse 12s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -15%;
+            right: -10%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            filter: blur(90px);
+            z-index: -1;
+            animation: pulse 15s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.1) translate(30px, 30px);
+                opacity: 1;
+            }
+        }
+
+        /* === Utility Classes === */
+        .glass-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* === Layout === */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* === Sidebar === */
+        .sidebar {
+            width: 280px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            flex-shrink: 0;
+        }
+
+        .logo h2 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a ion-icon {
+            font-size: 22px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), transparent);
+            color: var(--text-main);
+            box-shadow: inset 3px 0 0 var(--primary);
+        }
+
+        /* === Main Content === */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 0;
+            /* Fixes grid overflow */
+        }
+
+        /* Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+        }
+
+        .user-greeting h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .user-greeting .highlight {
+            background: linear-gradient(90deg, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .user-greeting p {
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .user-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dashboard Grid / Stats Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            padding: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .wallet-card::before {
+            background: var(--success);
+        }
+
+        .income-card::before {
+            background: var(--warning);
+        }
+
+        .team-left-card::before {
+            background: var(--primary);
+        }
+
+        .team-right-card::before {
+            background: var(--secondary);
+        }
+
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .wallet-card .stat-icon {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+        }
+
+        .income-card .stat-icon {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning);
+        }
+
+        .team-left-card .stat-icon {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--primary);
+        }
+
+        .team-right-card .stat-icon {
+            background: rgba(236, 72, 153, 0.15);
+            color: var(--secondary);
+        }
+
+        .stat-info h3 {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-info h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-info .trend,
+        .stat-info .details {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .trend.up {
+            color: var(--success);
+        }
+
+        .stat-info .details {
+            color: var(--text-muted);
+        }
+
+        /* Content Sections (Tables & Actions) */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .section-panel {
+            padding: 30px;
+        }
+
+        .section-panel h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .section-panel h3 ion-icon {
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transaction-table th,
+        .transaction-table td {
+            padding: 16px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .transaction-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .transaction-table td {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .transaction-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-success {
+            color: var(--success);
+        }
+
+        .text-warning {
+            color: var(--warning);
+        }
+
+        .text-primary {
+            color: #818cf8;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+                top: 0;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .nav-links a {
+                flex: 1 1 calc(50% - 10px);
+                justify-content: center;
+                padding: 12px;
+            }
+
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .user-avatar {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- === SIDEBAR NAVIGATION === -->
+        <aside class="sidebar glass-panel">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+                <div class="user-avatar" style="width: 46px; height: 46px; font-size: 16px; flex-shrink: 0; box-shadow: 0 0 10px var(--primary-glow);">AB</div>
+                <h2 style="font-size: 24px; margin: 0; display: flex; gap: 4px;">Admin<span>Panel</span></h2>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
+                <a href="#"><ion-icon name="wallet-outline"></ion-icon> E-Wallet</a>
+                <a href="#"><ion-icon name="cash-outline"></ion-icon> Commissions</a>
+                <a href="#"><ion-icon name="card-outline"></ion-icon> Withdrawals</a>
+                <a href="#"><ion-icon name="person-add-outline"></ion-icon> User Registration</a>
+            </nav>
+        </aside>
+
+        <!-- === MAIN DASHBOARD CONTENT === -->
+        <main class="main-content">
+
+            <!-- Header Section -->
+            <header class="top-header glass-panel">
+                <div class="user-greeting">
+                    <h1>Welcome back, <span class="highlight">Anshuman Bedanta</span></h1>
+                    <p>
+                        Sponsor ID: #NX-84920
+                        <span class="badge badge-success">Active Status</span>
+                    </p>
+                </div>
+            </header>
+
+            <!-- Stats Overview (Wallet, Income, Team) -->
+            <div class="dashboard-grid">
+
+                <!-- Card 1: E-Wallet Balance -->
+                <div class="stat-card glass-panel wallet-card">
+                    <div class="stat-icon"><ion-icon name="wallet"></ion-icon></div>
+                    <div class="stat-info">
+                        <h3>E-Wallet Balance</h3>
+                        <h2>₹4,250.00</h2>
+                        <span class="trend up"><ion-icon name="trending-up-outline"></ion-icon> +₹350 available</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Basic Commission -->
+                <div class="stat-card glass-panel income-card">
+                    <div class="stat-icon"><ion-icon name="cash"></ion-icon></div>
+                    <div class="stat-info">
+                        <h3>Total Income</h3>
+                        <h2>₹12,840.50</h2>
+                        <span class="details">Direct: ₹8.5k | Level: ₹4.3k</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Left Binary Team -->
+                <div class="stat-card glass-panel team-left-card">
+                    <div class="stat-icon"><ion-icon name="people"></ion-icon></div>
+                    <div class="stat-info">
+                        <h3>Left Team</h3>
+                        <h2>642</h2>
+                        <span class="trend up"><ion-icon name="arrow-up-outline"></ion-icon> +12 joining</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Right Binary Team -->
+                <div class="stat-card glass-panel team-right-card">
+                    <div class="stat-icon"><ion-icon name="people-circle-outline"></ion-icon></div>
+                    <div class="stat-info">
+                        <h3>Right Team</h3>
+                        <h2>418</h2>
+                        <span class="trend up"><ion-icon name="arrow-up-outline"></ion-icon> +8 joining</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Content Grid: Transactions & Quick Actions -->
+            <div class="content-grid">
+
+                <!-- Recent E-Wallet Transactions -->
+                <div class="section-panel glass-panel">
+                    <h3><ion-icon name="list-outline"></ion-icon> Recent Transactions</h3>
+                    <div class="table-responsive">
+                        <table class="transaction-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Oct 24, 2026</td>
+                                    <td>Direct Referral Bonus</td>
+                                    <td class="text-primary">Commission</td>
+                                    <td class="text-success">+₹150.00</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Oct 22, 2026</td>
+                                    <td>Withdrawal to Bank</td>
+                                    <td class="text-warning">Payout</td>
+                                    <td class="text-warning">-₹500.00</td>
+                                    <td>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td>Oct 20, 2026</td>
+                                    <td>Level 2 Income Match</td>
+                                    <td class="text-primary">Commission</td>
+                                    <td class="text-success">+₹45.50</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Oct 18, 2026</td>
+                                    <td>Left Tree Spillover Bonus</td>
+                                    <td class="text-primary">Commission</td>
+                                    <td class="text-success">+₹80.00</td>
+                                    <td>Completed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="section-panel glass-panel">
+                    <h3><ion-icon name="flash-outline"></ion-icon> Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">
+                            <ion-icon name="person-add"></ion-icon>
+                            Register New Member
+                        </button>
+                        <button class="btn btn-secondary">
+                            <ion-icon name="card"></ion-icon>
+                            Request Withdrawal
+                        </button>
+                        <button class="btn btn-secondary">
+                            <ion-icon name="git-network"></ion-icon>
+                            View Binary Tree
+                        </button>
+                    </div>
+
+                    <!-- Invite Link Snippet -->
+                    <div
+                        style="margin-top: 30px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2);">
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Your Sponsor Link:</p>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" value="https://samplemlm.com/join/NX84920" readonly
+                                style="width: 100%; background: transparent; border: none; color: var(--primary); font-family: monospace; font-size: 14px; outline: none;">
+                            <ion-icon name="copy-outline" style="cursor: pointer; color: var(--text-muted);"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>
