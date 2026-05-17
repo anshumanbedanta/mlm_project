@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus MLM - User Registration</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* Exact same styles as dashboard.html + extra e-wallet styles */
+        :root {
+            --bg-main: #050814;
+            --panel-bg: rgba(15, 23, 42, 0.6);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --panel-hover: rgba(255, 255, 255, 0.12);
+
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+
+            --secondary: #ec4899;
+            --secondary-glow: rgba(236, 72, 153, 0.4);
+
+            --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.3);
+
+            --warning: #f59e0b;
+            --danger: #ef4444;
+
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* === Premium Background Effects === */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        body::before {
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
+        }
+
+        body::after {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--secondary-glow) 0%, transparent 60%);
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, 50px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* === Utility Classes === */
+        .glass-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--panel-border);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--panel-hover);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* === Layout === */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 24px;
+            gap: 24px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* === Sidebar === */
+        .sidebar {
+            width: 280px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: sticky;
+            top: 24px;
+            height: calc(100vh - 48px);
+            flex-shrink: 0;
+        }
+
+        .logo h2 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 11px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a ion-icon {
+            font-size: 24px;
+            min-width: 24px;
+            display: flex;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .nav-links a:hover ion-icon {
+            transform: scale(1.1);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), transparent);
+            border-left: 3px solid var(--primary-light);
+            box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.1);
+        }
+
+        /* === Main Content === */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-width: 0;
+        }
+
+        /* Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-radius: 20px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 0 25px var(--primary-glow);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .user-avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .section-panel {
+            padding: 32px;
+            border-radius: 24px;
+        }
+
+        .section-panel h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .section-panel h3 ion-icon {
+            color: var(--primary-light);
+            font-size: 26px;
+            padding: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            box-shadow: 0 8px 25px var(--primary-glow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Form elements */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon-wrapper ion-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 16px 16px 48px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+            appearance: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2), inset 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-control:focus+ion-icon {
+            color: var(--primary-light);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        select option {
+            background: var(--bg-main);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 24px;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                flex: 1 1 calc(50% - 10px);
+                justify-content: center;
+                padding: 14px;
+            }
+
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .user-avatar {
+                position: absolute;
+                right: 24px;
+                top: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo" style="display: flex; align-items: center; gap: 14px;">
+                <div class="user-avatar"
+                    style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; justify-content: center; align-items: center; font-size: 18px; font-weight: 700; box-shadow: 0 0 15px var(--primary-glow); flex-shrink:0; color: white;">
+                    AB</div>
+                <h2 style="margin: 0; display: flex; align-items: center; gap: 6px;">Admin<span>Panel</span></h2>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
+                <a href="ewallet.html"><ion-icon name="wallet-outline"></ion-icon> E-Wallet</a>
+                <a href="#"><ion-icon name="cash-outline"></ion-icon> Commissions</a>
+                <a href="#"><ion-icon name="card-outline"></ion-icon> Withdrawals</a>
+                <a href="tree.html"><ion-icon name="git-network-outline"></ion-icon> Binary Tree</a>
+                <a href="register.html" class="active"><ion-icon name="person-add-outline"></ion-icon> User
+                    Registration</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="top-header glass-panel fade-in-up">
+                <div>
+                    <h1 class="header-title">Register New Member</h1>
+                    <p class="header-subtitle">Expand your network by placing new downlines into the binary tree.</p>
+                </div>
+            </header>
+
+            <!-- Registration Form -->
+            <div class="section-panel glass-panel fade-in-up delay-1">
+                <h3><ion-icon name="person-add"></ion-icon> Member Details</h3>
+
+                <form action="#" method="POST" id="registrationForm">
+                    <div class="form-grid">
+
+                        <!-- Sponsor ID -->
+                        <div class="form-group">
+                            <label>Sponsor ID</label>
+                            <div class="input-icon-wrapper">
+                                <input type="text" class="form-control" placeholder="Enter Sponsor ID" required>
+                                <ion-icon name="key-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Placement Selection -->
+                        <div class="form-group">
+                            <label>Placement Position</label>
+                            <div class="input-icon-wrapper">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Select Position</option>
+                                    <option value="left">Left Leg</option>
+                                    <option value="right">Right Leg</option>
+                                </select>
+                                <ion-icon name="git-merge-outline"></ion-icon>
+                                <ion-icon name="chevron-down-outline" class="select-arrow"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <div class="input-icon-wrapper">
+                                <input type="text" class="form-control" placeholder="Enter full name" required>
+                                <ion-icon name="person-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-icon-wrapper">
+                                <input type="email" class="form-control" placeholder="Enter email address" required>
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <div class="input-icon-wrapper">
+                                <input type="tel" class="form-control" placeholder="Enter phone number" required>
+                                <ion-icon name="call-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-icon-wrapper">
+                                <input type="password" class="form-control" placeholder="Create a password" required>
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group full-width" style="margin-top: 16px;">
+                            <button type="button" class="btn btn-primary" onclick="simulateRegistration(this)">
+                                <ion-icon name="checkmark-circle-outline" style="font-size: 22px;"></ion-icon>
+                                Register Member
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Simple JS to simulate registration -->
+    <style>
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        function simulateRegistration(btn) {
+            // Very simple form validation to check if fields are empty
+            const form = document.getElementById('registrationForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<ion-icon name="sync-outline" style="font-size: 22px; animation: spin 1s linear infinite;"></ion-icon> Processing...';
+            btn.style.opacity = '0.8';
+            btn.style.pointerEvents = 'none';
+
+            // Simulate API call
+            setTimeout(() => {
+                btn.innerHTML = '<ion-icon name="checkmark-done-outline" style="font-size: 22px;"></ion-icon> Registration Successful!';
+                btn.classList.remove('btn-primary');
+                btn.style.background = 'linear-gradient(135deg, var(--success), #34d399)';
+                btn.style.boxShadow = '0 8px 25px var(--success-glow)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                    btn.classList.add('btn-primary');
+                    btn.style.background = '';
+                    btn.style.boxShadow = '';
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

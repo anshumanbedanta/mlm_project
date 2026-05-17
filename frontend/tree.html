@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus MLM - Binary Tree</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* Exact same global styles */
+        :root {
+            --bg-main: #050814;
+            --panel-bg: rgba(15, 23, 42, 0.6);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --panel-hover: rgba(255, 255, 255, 0.12);
+
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+
+            --secondary: #ec4899;
+            --secondary-glow: rgba(236, 72, 153, 0.4);
+
+            --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.3);
+
+            --warning: #f59e0b;
+            --danger: #ef4444;
+
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* === Premium Background Effects === */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        body::before {
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
+        }
+
+        body::after {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--secondary-glow) 0%, transparent 60%);
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, 50px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        /* === Utility Classes === */
+        .glass-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--panel-border);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* === Layout === */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 24px;
+            gap: 24px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* === Sidebar === */
+        .sidebar {
+            width: 280px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: sticky;
+            top: 24px;
+            height: calc(100vh - 48px);
+            flex-shrink: 0;
+        }
+
+        .logo h2 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 11px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a ion-icon {
+            font-size: 24px;
+            min-width: 24px;
+            display: flex;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .nav-links a:hover ion-icon {
+            transform: scale(1.1);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), transparent);
+            border-left: 3px solid var(--primary-light);
+            box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.1);
+        }
+
+        /* === Main Content === */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-width: 0;
+        }
+
+        /* Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-radius: 20px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* === Binary Tree Section === */
+
+        .tree-header-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .tree-search {
+            position: relative;
+            width: 300px;
+        }
+
+        .tree-search ion-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--text-muted);
+        }
+
+        .tree-search input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .tree-search input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tree-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+            border: 1px solid var(--panel-border);
+            display: flex;
+            justify-content: center;
+        }
+
+        .tree {
+            display: inline-block;
+            min-width: fit-content;
+        }
+
+        .tree ul {
+            padding-top: 30px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tree li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 30px 15px 0 15px;
+        }
+
+        /* Horizontal connectors */
+        .tree li::before,
+        .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid rgba(99, 102, 241, 0.4);
+            width: 50%;
+            height: 30px;
+        }
+
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid rgba(99, 102, 241, 0.4);
+        }
+
+        /* Remove connectors from single child */
+        .tree li:only-child::after,
+        .tree li:only-child::before {
+            display: none;
+        }
+
+        .tree li:only-child {
+            padding-top: 0;
+        }
+
+        /* Correct first/last connectors */
+        .tree li:first-child::before,
+        .tree li:last-child::after {
+            border: 0 none;
+        }
+
+        .tree li:last-child::before {
+            border-right: 2px solid rgba(99, 102, 241, 0.4);
+            border-radius: 0 12px 0 0;
+        }
+
+        .tree li:first-child::after {
+            border-radius: 12px 0 0 0;
+        }
+
+        /* Downward connectors from parents */
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid rgba(99, 102, 241, 0.4);
+            width: 0;
+            height: 30px;
+            transform: translateX(-50%);
+        }
+
+        /* Node Styling */
+        .tree-node {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(10px);
+            padding: 20px 24px;
+            border-radius: 20px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            min-width: 160px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tree-node:hover {
+            border-color: var(--primary);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 40px var(--primary-glow);
+            z-index: 2;
+        }
+
+        .tree-node .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px var(--primary-glow);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tree-node .name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .tree-node .id {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .tree-node .status {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tree-node .status.active {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .tree-node .status.inactive {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .tree-node .status.vacant {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            color: var(--text-muted);
+        }
+
+        .tree-node.root-node {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.1));
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Tooltip on hover */
+        .tree-node::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: pre-wrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            pointer-events: none;
+            text-align: left;
+            min-width: 140px;
+        }
+
+        .tree-node:hover::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-15px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 24px;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                flex: 1 1 calc(50% - 10px);
+                justify-content: center;
+                padding: 14px;
+            }
+
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .tree-header-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo" style="display: flex; align-items: center; gap: 14px;">
+                <div class="user-avatar"
+                    style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; justify-content: center; align-items: center; font-size: 18px; font-weight: 700; box-shadow: 0 0 15px var(--primary-glow); flex-shrink:0; color: white;">
+                    AB</div>
+                <h2 style="margin: 0; display: flex; align-items: center; gap: 6px;">Admin<span>Panel</span></h2>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
+                <a href="ewallet.html"><ion-icon name="wallet-outline"></ion-icon> E-Wallet</a>
+                <a href="#"><ion-icon name="cash-outline"></ion-icon> Commissions</a>
+                <a href="#"><ion-icon name="card-outline"></ion-icon> Withdrawals</a>
+                <a href="tree.html" class="active"><ion-icon name="git-network-outline"></ion-icon> Binary Tree</a>
+                <a href="register.html"><ion-icon name="person-add-outline"></ion-icon> User Registration</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="top-header glass-panel fade-in-up">
+                <div>
+                    <h1 class="header-title">Genealogy Tree</h1>
+                    <p class="header-subtitle">Visualize your network, downlines, and binary placements.</p>
+                </div>
+            </header>
+
+            <div class="tree-header-actions fade-in-up delay-1">
+                <div class="tree-search">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search by Member ID or Name...">
+                </div>
+                <button class="btn"><ion-icon name="add-circle-outline"></ion-icon> Zoom In</button>
+                <button class="btn"><ion-icon name="remove-circle-outline"></ion-icon> Zoom Out</button>
+                <button class="btn"><ion-icon name="locate-outline"></ion-icon> Recenter</button>
+            </div>
+
+            <!-- Binary Tree Visualization -->
+            <div class="tree-wrapper fade-in-up delay-1">
+                <div class="tree">
+                    <ul>
+                        <li>
+                            <!-- Root Node -->
+                            <div class="tree-node root-node"
+                                data-tooltip="Left Team: 150&#xa;Right Team: 120&#xa;Total Business: ₹250,000">
+                                <div class="avatar">AB</div>
+                                <div class="name">Anshuman Bedanta</div>
+                                <div class="id">#NX-84920</div>
+                                <div class="status active">Active</div>
+                            </div>
+
+                            <!-- Level 1 -->
+                            <ul>
+                                <li>
+                                    <!-- Left Child -->
+                                    <div class="tree-node"
+                                        data-tooltip="Left Team: 80&#xa;Right Team: 70&#xa;Total Business: ₹120,000">
+                                        <div class="avatar"
+                                            style="background: linear-gradient(135deg, #10b981, #34d399);">JS</div>
+                                        <div class="name">John Smith</div>
+                                        <div class="id">#NX-84921</div>
+                                        <div class="status active">Active</div>
+                                    </div>
+
+                                    <!-- Level 2 (Left Branch) -->
+                                    <ul>
+                                        <li>
+                                            <div class="tree-node"
+                                                data-tooltip="Left Team: 0&#xa;Right Team: 0&#xa;Total Business: ₹0">
+                                                <div class="avatar"
+                                                    style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">MD
+                                                </div>
+                                                <div class="name">Mike Davis</div>
+                                                <div class="id">#NX-84923</div>
+                                                <div class="status inactive">Inactive</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="tree-node" onclick="window.location.href='register.html'">
+                                                <div class="avatar"
+                                                    style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.3); box-shadow: none;">
+                                                    +</div>
+                                                <div class="name">Add User</div>
+                                                <div class="id">Right Leg</div>
+                                                <div class="status vacant">Vacant</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <!-- Right Child -->
+                                    <div class="tree-node"
+                                        data-tooltip="Left Team: 50&#xa;Right Team: 70&#xa;Total Business: ₹130,000">
+                                        <div class="avatar"
+                                            style="background: linear-gradient(135deg, #ec4899, #f472b6);">SJ</div>
+                                        <div class="name">Sarah Jane</div>
+                                        <div class="id">#NX-84922</div>
+                                        <div class="status active">Active</div>
+                                    </div>
+
+                                    <!-- Level 2 (Right Branch) -->
+                                    <ul>
+                                        <li>
+                                            <div class="tree-node"
+                                                data-tooltip="Left Team: 10&#xa;Right Team: 5&#xa;Total Business: ₹15,000">
+                                                <div class="avatar"
+                                                    style="background: linear-gradient(135deg, #6366f1, #818cf8);">RK
+                                                </div>
+                                                <div class="name">Raj Kumar</div>
+                                                <div class="id">#NX-84924</div>
+                                                <div class="status active">Active</div>
+                                            </div>
+                                            <!-- Level 3 -->
+                                            <ul>
+                                                <li>
+                                                    <div class="tree-node"
+                                                        onclick="window.location.href='register.html'">
+                                                        <div class="avatar"
+                                                            style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.3); box-shadow: none;">
+                                                            +</div>
+                                                        <div class="name">Add User</div>
+                                                        <div class="id">Left Leg</div>
+                                                        <div class="status vacant">Vacant</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tree-node"
+                                                        onclick="window.location.href='register.html'">
+                                                        <div class="avatar"
+                                                            style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.3); box-shadow: none;">
+                                                            +</div>
+                                                        <div class="name">Add User</div>
+                                                        <div class="id">Right Leg</div>
+                                                        <div class="status vacant">Vacant</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="tree-node" onclick="window.location.href='register.html'">
+                                                <div class="avatar"
+                                                    style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.3); box-shadow: none;">
+                                                    +</div>
+                                                <div class="name">Add User</div>
+                                                <div class="id">Right Leg</div>
+                                                <div class="status vacant">Vacant</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

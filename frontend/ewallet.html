@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus MLM - Core System Dashboard</title>
+    <title>E-Wallet - Admin Panel</title>
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Ionicons for High-Quality Icons -->
+    <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -844,7 +844,7 @@
 
     <div class="app-container">
 
-        <!-- === SIDEBAR NAVIGATION === -->
+        <!-- Sidebar Navigation -->
         <aside class="sidebar glass-panel">
             <div class="logo" style="display: flex; align-items: center; gap: 14px;">
                 <div class="user-avatar"
@@ -853,8 +853,8 @@
                 <h2 style="margin: 0; display: flex; align-items: center; gap: 6px;">Admin<span>Panel</span></h2>
             </div>
             <nav class="nav-links">
-                <a href="dashboard.html" class="active"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
-                <a href="ewallet.html"><ion-icon name="wallet-outline"></ion-icon> E-Wallet</a>
+                <a href="dashboard.html"><ion-icon name="grid-outline"></ion-icon> Dashboard</a>
+                <a href="ewallet.html" class="active"><ion-icon name="wallet-outline"></ion-icon> E-Wallet</a>
                 <a href="#"><ion-icon name="cash-outline"></ion-icon> Commissions</a>
                 <a href="#"><ion-icon name="card-outline"></ion-icon> Withdrawals</a>
                 <a href="tree.html"><ion-icon name="git-network-outline"></ion-icon> Binary Tree</a>
@@ -862,144 +862,111 @@
             </nav>
         </aside>
 
-        <!-- === MAIN DASHBOARD CONTENT === -->
+        <!-- Main Content -->
         <main class="main-content">
 
-            <!-- Header Section -->
+            <!-- Header -->
             <header class="top-header glass-panel fade-in-up">
-                <div class="user-greeting">
-                    <h1>Welcome back, <span class="highlight">Anshuman Bedanta</span></h1>
-                    <p>
-                        Sponsor ID: #NX-84920
-                        <span class="badge badge-success">Active Status</span>
-                    </p>
+                <div>
+                    <h1 class="header-title">E-Wallet Management</h1>
+                    <p class="header-subtitle">Manage funds, view statements, and process transfers safely.</p>
                 </div>
             </header>
 
-            <!-- Stats Overview (Wallet, Income, Team) -->
-            <div class="dashboard-grid fade-in-up delay-1">
-
-                <!-- Card 1: E-Wallet Balance -->
-                <div class="stat-card glass-panel wallet-card">
-                    <div class="stat-icon"><ion-icon name="wallet"></ion-icon></div>
-                    <div class="stat-info">
-                        <h3>E-Wallet Balance</h3>
-                        <h2>₹4,250.00</h2>
-                        <span class="trend up"><ion-icon name="trending-up-outline"></ion-icon> +₹350 available</span>
+            <!-- Wallet Overview Top Row -->
+            <div class="ewallet-grid fade-in-up delay-1">
+                <div class="wallet-balance-card glass-panel">
+                    <div class="balance-info">
+                        <h3>Available Balance</h3>
+                        <h1>₹4,250.00</h1>
+                    </div>
+                    <div class="balance-actions">
+                        <button class="btn btn-success"><ion-icon name="add-circle-outline"></ion-icon> Add
+                            Funds</button>
+                        <button class="btn btn-primary"><ion-icon name="paper-plane-outline"></ion-icon>
+                            Withdraw</button>
                     </div>
                 </div>
 
-                <!-- Card 2: Basic Commission -->
-                <div class="stat-card glass-panel income-card">
-                    <div class="stat-icon"><ion-icon name="cash"></ion-icon></div>
-                    <div class="stat-info">
-                        <h3>Total Income</h3>
-                        <h2>₹12,840.50</h2>
-                        <span class="details">Direct: ₹8.5k | Level: ₹4.3k</span>
-                    </div>
+                <div class="action-card deposit glass-panel">
+                    <div class="action-icon"><ion-icon name="swap-horizontal-outline"></ion-icon></div>
+                    <h3 style="font-weight: 600; font-size: 16px;">Fund Transfer</h3>
+                    <p style="color: var(--text-muted); font-size: 13px;">Transfer balance to any network user</p>
                 </div>
-
-                <!-- Card 3: Left Binary Team -->
-                <div class="stat-card glass-panel team-left-card">
-                    <div class="stat-icon"><ion-icon name="people"></ion-icon></div>
-                    <div class="stat-info">
-                        <h3>Left Team</h3>
-                        <h2>642</h2>
-                        <span class="trend up"><ion-icon name="arrow-up-outline"></ion-icon> +12 joining</span>
-                    </div>
-                </div>
-
-                <!-- Card 4: Right Binary Team -->
-                <div class="stat-card glass-panel team-right-card">
-                    <div class="stat-icon"><ion-icon name="people-circle-outline"></ion-icon></div>
-                    <div class="stat-info">
-                        <h3>Right Team</h3>
-                        <h2>418</h2>
-                        <span class="trend up"><ion-icon name="arrow-up-outline"></ion-icon> +8 joining</span>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Content Grid: Transactions & Quick Actions -->
-            <div class="content-grid fade-in-up delay-2">
+            <!-- Content Split (History & Transfer Form) -->
+            <div class="content-split fade-in-up delay-2">
 
-                <!-- Recent E-Wallet Transactions -->
+                <!-- Wallet Statement -->
                 <div class="section-panel glass-panel">
-                    <h3><ion-icon name="list-outline"></ion-icon> Recent Transactions</h3>
+                    <h3><ion-icon name="document-text-outline"></ion-icon> Wallet Statement</h3>
                     <div class="table-responsive">
                         <table class="transaction-table">
                             <thead>
                                 <tr>
+                                    <th>Ref ID</th>
                                     <th>Date</th>
                                     <th>Description</th>
-                                    <th>Type</th>
                                     <th>Amount</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td style="color: var(--text-muted);">#TRX-9938</td>
                                     <td>Oct 24, 2026</td>
-                                    <td>Direct Referral Bonus</td>
-                                    <td class="text-primary">Commission</td>
-                                    <td class="text-success">+₹150.00</td>
-                                    <td>Completed</td>
+                                    <td>Fund Transfer to User #NX-502</td>
+                                    <td class="text-danger">-₹1,200.00</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
                                 </tr>
                                 <tr>
+                                    <td style="color: var(--text-muted);">#TRX-9937</td>
                                     <td>Oct 22, 2026</td>
-                                    <td>Withdrawal to Bank</td>
-                                    <td class="text-warning">Payout</td>
-                                    <td class="text-warning">-₹500.00</td>
-                                    <td>Pending</td>
+                                    <td>Admin Deposit via Crypto</td>
+                                    <td class="text-success">+₹5,000.00</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
                                 </tr>
                                 <tr>
-                                    <td>Oct 20, 2026</td>
-                                    <td>Level 2 Income Match</td>
-                                    <td class="text-primary">Commission</td>
-                                    <td class="text-success">+₹45.50</td>
-                                    <td>Completed</td>
+                                    <td style="color: var(--text-muted);">#TRX-9921</td>
+                                    <td>Oct 19, 2026</td>
+                                    <td>Withdrawal to Bank Account</td>
+                                    <td class="text-danger">-₹2,500.00</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
                                 </tr>
                                 <tr>
-                                    <td>Oct 18, 2026</td>
-                                    <td>Left Tree Spillover Bonus</td>
-                                    <td class="text-primary">Commission</td>
-                                    <td class="text-success">+₹80.00</td>
-                                    <td>Completed</td>
+                                    <td style="color: var(--text-muted);">#TRX-9850</td>
+                                    <td>Oct 15, 2026</td>
+                                    <td>Direct Referral Commission</td>
+                                    <td class="text-success">+₹450.00</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Quick Actions Panel -->
+                <!-- Quick Transfer Form -->
                 <div class="section-panel glass-panel">
-                    <h3><ion-icon name="flash-outline"></ion-icon> Quick Actions</h3>
-                    <div class="action-buttons">
-                        <button class="btn btn-primary">
-                            <ion-icon name="person-add"></ion-icon>
-                            Register New Member
-                        </button>
-                        <button class="btn btn-secondary">
-                            <ion-icon name="card"></ion-icon>
-                            Request Withdrawal
-                        </button>
-                        <button class="btn btn-secondary">
-                            <ion-icon name="git-network"></ion-icon>
-                            View Binary Tree
-                        </button>
-                    </div>
-
-                    <!-- Invite Link Snippet -->
-                    <div
-                        style="margin-top: 30px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2);">
-                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Your Sponsor Link:</p>
-                        <div style="display: flex; gap: 10px;">
-                            <input type="text" value="https://samplemlm.com/join/NX84920" readonly
-                                style="width: 100%; background: transparent; border: none; color: var(--primary); font-family: monospace; font-size: 14px; outline: none;">
-                            <ion-icon name="copy-outline" style="cursor: pointer; color: var(--text-muted);"></ion-icon>
+                    <h3><ion-icon name="flash-outline"></ion-icon> Quick Transfer</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Transfer To (User ID / Email)</label>
+                            <input type="text" class="form-control" placeholder="e.g. NX-502 or user@email.com">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Amount (₹)</label>
+                            <input type="number" class="form-control" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction Pin / OTP</label>
+                            <input type="password" class="form-control" placeholder="Enter secure PIN">
+                        </div>
+                        <button type="button" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; margin-top: 10px;">
+                            Confirm Transfer <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </button>
+                    </form>
                 </div>
 
             </div>
