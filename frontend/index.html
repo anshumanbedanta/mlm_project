@@ -1,111 +1,643 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MLM Login</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus MLM - Global Business Opportunity</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', // blue-900
+                        secondary: '#3b82f6', // blue-500
+                        accent: '#eff6ff', // blue-50
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
+<body class="bg-gray-50 text-gray-800">
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm fixed w-full z-50 top-0 border-b border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center gap-4">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <ion-icon name="globe-outline" class="text-3xl text-primary"></ion-icon>
+                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                </div>
+                
+                <!-- Nav Links (Desktop) -->
+                <div class="hidden lg:flex space-x-6 items-center text-sm font-medium text-gray-700 relative z-50">
+                    
+                    <!-- Categories Dropdown -->
+                    <div class="group relative cursor-pointer py-6">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Categories <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Health Care</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Personal Care</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Agriculture</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Home Care</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Food & Grocery</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Brands Dropdown -->
+                    <div class="group relative cursor-pointer py-6">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Brands <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Nutricharge</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Good Dot</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Key Soul</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Harit Sanjivani</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- World of RCM Dropdown -->
+                    <div class="group relative cursor-pointer py-6">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">World of RCM <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div class="absolute left-0 top-full w-56 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">About Us</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Business Plan</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Awards & Recognition</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Success Stories</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- More Dropdown -->
+                    <div class="group relative cursor-pointer py-6">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">More <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Contact Us</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Download App</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Store Locator</a></li>
+                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Customer Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-lg mx-4">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search Product, Categories, Brands etc." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition">
+                        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+                            <ion-icon name="search-outline" class="text-lg"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="hidden md:flex items-center space-x-5">
+                    <!-- Delivery Location -->
+                    <div class="hidden xl:flex items-center gap-2 text-sm text-gray-600">
+                        <ion-icon name="location-outline" class="text-xl"></ion-icon>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-xs text-gray-400">Delivery to</span>
+                            <span class="font-semibold text-gray-800">834001</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Language -->
+                    <a href="#" class="hidden lg:flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition">
+                        EN <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon>
+                    </a>
+                    
+                    <!-- Cart -->
+                    <a href="#" class="text-gray-700 hover:text-primary transition relative">
+                        <ion-icon name="cart-outline" class="text-2xl"></ion-icon>
+                        <span class="absolute -top-1.5 -right-1.5 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </a>
+                    
+                    <!-- Login Button -->
+                    <a href="../frontend/index.html" class="bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full font-medium transition shadow-md shadow-blue-200 text-sm">
+                        Sign In
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <a href="#" class="text-gray-700 hover:text-primary transition relative">
+                        <ion-icon name="cart-outline" class="text-2xl"></ion-icon>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
+                        <ion-icon name="menu-outline" class="text-3xl"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Bar (shows only on small screens) -->
+            <div class="md:hidden pb-4">
+                <div class="relative w-full">
+                    <input type="text" placeholder="Search..." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2 focus:outline-none focus:border-primary">
+                    <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-  <div class="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
+        <!-- Mobile Sidebar Menu -->
+        <div id="mobile-menu" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300">
+            <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+                <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                    <button id="close-menu-btn" class="text-gray-500 hover:text-red-500 text-3xl focus:outline-none">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </div>
+                
+                <div class="overflow-y-auto flex-1 p-5">
+                    <div class="space-y-4">
+                        <!-- Mobile Accordions -->
+                        <div class="border-b border-gray-100 pb-2">
+                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                Categories <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            </button>
+                            <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
+                                <a href="#" class="hover:text-primary">Health Care</a>
+                                <a href="#" class="hover:text-primary">Personal Care</a>
+                                <a href="#" class="hover:text-primary">Agriculture</a>
+                                <a href="#" class="hover:text-primary">Home Care</a>
+                                <a href="#" class="hover:text-primary">Food & Grocery</a>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-2">
+                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                Brands <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            </button>
+                            <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
+                                <a href="#" class="hover:text-primary">Nutricharge</a>
+                                <a href="#" class="hover:text-primary">Good Dot</a>
+                                <a href="#" class="hover:text-primary">Key Soul</a>
+                                <a href="#" class="hover:text-primary">Harit Sanjivani</a>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-2">
+                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                World of RCM <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            </button>
+                            <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
+                                <a href="#" class="hover:text-primary">About Us</a>
+                                <a href="#" class="hover:text-primary">Business Plan</a>
+                                <a href="#" class="hover:text-primary">Awards & Recognition</a>
+                                <a href="#" class="hover:text-primary">Success Stories</a>
+                            </div>
+                        </div>
 
-    <!-- Logo / Title -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-blue-900">
-        MLM Software
-      </h1>
+                        <div class="border-b border-gray-100 pb-2">
+                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                More <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            </button>
+                            <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
+                                <a href="#" class="hover:text-primary">Contact Us</a>
+                                <a href="#" class="hover:text-primary">Download App</a>
+                                <a href="#" class="hover:text-primary">Store Locator</a>
+                                <a href="#" class="hover:text-primary">Customer Support</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 space-y-4">
+                        <a href="../frontend/index.html" class="flex justify-center items-center gap-2 w-full text-center border-2 border-primary text-primary font-bold py-3 rounded-full hover:bg-blue-50 transition text-lg">
+                            <ion-icon name="log-in-outline"></ion-icon> Sign In
+                        </a>
+                        <a href="../frontend/register.html" class="flex justify-center items-center gap-2 w-full text-center bg-primary text-white font-bold py-3 rounded-full hover:bg-blue-800 shadow-md transition text-lg">
+                            <ion-icon name="person-add-outline"></ion-icon> Join Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-      <p class="text-gray-500 mt-2">
-        Login to your dashboard
-      </p>
+    <!-- Hero Banner -->
+    <div class="relative bg-white pt-20 overflow-hidden">
+        <!-- Abstract background shape -->
+        <div class="absolute inset-0 bg-accent transform -skew-y-6 origin-top-left -z-10 h-[120%]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-32 lg:pb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative z-10">
+                    <span class="inline-block py-1 px-4 rounded-full bg-blue-100 text-secondary font-bold text-sm mb-6 tracking-wide uppercase">
+                        Global Business Opportunity
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Transform Your Future With <span class="text-primary">Direct Selling</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                        Join a community of thousands of successful entrepreneurs. Premium health & wellness products combined with a highly rewarding compensation plan.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../frontend/register.html" class="bg-primary hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold transition shadow-xl shadow-blue-300 flex items-center gap-2 hover:-translate-y-1">
+                            Start Your Journey <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </a>
+                        <a href="#business" class="bg-white border-2 border-primary text-primary hover:bg-accent px-8 py-4 rounded-full font-bold transition hover:-translate-y-1">
+                            View Business Plan
+                        </a>
+                    </div>
+                </div>
+                <div class="relative z-10">
+                    <!-- Hero Image -->
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Business Meeting" class="rounded-3xl shadow-2xl relative z-10 border-4 border-white">
+                    
+                    <!-- Floating Stat Badge -->
+                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-gray-100 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 p-4 rounded-full text-green-600">
+                            <ion-icon name="trending-up" class="text-3xl"></ion-icon>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-semibold uppercase">Active Distributors</p>
+                            <p class="text-3xl font-black text-gray-900">50,000+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Demo Credentials Info -->
-    <div class="bg-blue-50 text-blue-800 text-sm p-3 rounded-lg mb-6 border border-blue-200">
-      <p class="mb-1"><strong>Demo User:</strong> user@mlm.com / pass123</p>
-      <p><strong>Demo Admin:</strong> admin@mlm.com / admin123</p>
+    <!-- Features -->
+    <div id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Why Choose Us</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">The Ultimate Business Platform</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
+                    <div class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
+                        <ion-icon name="shield-checkmark-outline" class="text-3xl"></ion-icon>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Premium Quality Products</h4>
+                    <p class="text-gray-600 leading-relaxed">Our products go through rigorous quality checks to ensure you offer only the best to your customers and downlines.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-primary p-10 rounded-3xl hover:-translate-y-2 transition duration-300 text-white shadow-2xl shadow-blue-900/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl"></div>
+                    <div class="bg-white/10 backdrop-blur w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner mb-6 text-white border border-white/20">
+                        <ion-icon name="cash-outline" class="text-3xl"></ion-icon>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">High Commission Payouts</h4>
+                    <p class="text-blue-100 leading-relaxed">Enjoy one of the most lucrative binary compensation plans in the industry with instant e-wallet withdrawals to your bank.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
+                    <div class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
+                        <ion-icon name="school-outline" class="text-3xl"></ion-icon>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Training & Support</h4>
+                    <p class="text-gray-600 leading-relaxed">Access exclusive seminars, leadership training, and a dedicated admin dashboard to monitor and grow your network effectively.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Login Form -->
-    <form action="dashboard.html" onsubmit="return handleLogin(event)">
+    <!-- Categories Section -->
+    <div class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Categories</h2>
+            <p class="text-gray-500 mb-12">Find Exactly What You Need.</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+                <!-- Category 1 -->
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-green-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Health Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Health Care</span>
+                </a>
+                
+                <!-- Category 2 -->
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Personal Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Personal Care</span>
+                </a>
+                
+                <!-- Category 3 -->
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-orange-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Agriculture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Agriculture</span>
+                </a>
+                
+                <!-- Category 4 -->
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-pink-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Home Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Home Care</span>
+                </a>
+                
+                <!-- Category 5 -->
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-purple-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Food & Grocery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Food & Grocery</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-      <!-- Login Type -->
-      <div class="mb-6">
-        <label class="block text-gray-700 font-medium mb-2">
-          Login As
-        </label>
+    <!-- Product Showcase -->
+    <div id="products" class="py-24 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Our Catalog</h2>
+                    <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">Health & Wellness Range</h3>
+                </div>
+                <a href="#" class="text-primary font-bold hover:text-secondary transition flex items-center gap-1 mt-4 md:mt-0 text-lg">
+                    View All Products <ion-icon name="arrow-forward"></ion-icon>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                    <div class="h-64 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550572017-edb7e28d85f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-primary text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">New Arrival</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Nutrition</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Organic Whey Protein</h4>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <span class="text-2xl font-black text-primary">₹1,299</span>
+                                <span class="text-sm text-gray-400 line-through ml-2">₹1,599</span>
+                            </div>
+                            <span class="text-sm font-bold bg-green-100 text-green-700 px-2 py-1 rounded">100 BV</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                    <div class="h-64 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Skincare</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Aloe Vera Face Wash</h4>
+                        <div class="flex justify-between items-end">
+                            <span class="text-2xl font-black text-primary">₹349</span>
+                            <span class="text-sm font-bold bg-green-100 text-green-700 px-2 py-1 rounded">25 BV</span>
+                        </div>
+                    </div>
+                </div>
 
-        <select
-          class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700"
-        >
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+                <!-- Product 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                    <div class="h-64 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5e468305c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">Best Seller</div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Supplements</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Multivitamin Tablets</h4>
+                        <div class="flex justify-between items-end">
+                            <span class="text-2xl font-black text-primary">₹699</span>
+                            <span class="text-sm font-bold bg-green-100 text-green-700 px-2 py-1 rounded">50 BV</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Email -->
-      <div class="mb-5">
-        <label class="block text-gray-700 font-medium mb-2">
-          Email
-        </label>
+                <!-- Product 4 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                    <div class="h-64 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Wellness</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Green Tea Extract</h4>
+                        <div class="flex justify-between items-end">
+                            <span class="text-2xl font-black text-primary">₹450</span>
+                            <span class="text-sm font-bold bg-green-100 text-green-700 px-2 py-1 rounded">35 BV</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <input
-          type="email"
-          placeholder="Enter your email"
-          class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700"
-        />
-      </div>
+    <!-- MLM Business Flow -->
+    <div id="business" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">How It Works</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">Simple Steps to Financial Freedom</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center relative group">
+                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                        <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                    <!-- Connector line (hidden on mobile) -->
+                    <div class="hidden md:block absolute top-12 left-[60%] w-[80%] h-1 bg-blue-100 -z-0"></div>
+                    <h4 class="font-bold text-xl mb-2 text-gray-900">1. Register</h4>
+                    <p class="text-gray-600">Join our network for free using a valid sponsor ID.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center relative group">
+                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                    <div class="hidden md:block absolute top-12 left-[60%] w-[80%] h-1 bg-blue-100 -z-0"></div>
+                    <h4 class="font-bold text-xl mb-2 text-gray-900">2. Purchase</h4>
+                    <p class="text-gray-600">Buy daily use products and accumulate Business Volume (BV).</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center relative group">
+                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                        <ion-icon name="share-social-outline"></ion-icon>
+                    </div>
+                    <div class="hidden md:block absolute top-12 left-[60%] w-[80%] h-1 bg-blue-100 -z-0"></div>
+                    <h4 class="font-bold text-xl mb-2 text-gray-900">3. Recommend</h4>
+                    <p class="text-gray-600">Share products with friends and build your binary tree.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="text-center relative group">
+                    <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center text-white text-4xl mb-6 shadow-xl shadow-blue-200 border-4 border-white relative z-10 group-hover:scale-110 transition duration-300">
+                        <ion-icon name="wallet-outline"></ion-icon>
+                    </div>
+                    <h4 class="font-bold text-xl mb-2 text-gray-900">4. Earn</h4>
+                    <p class="text-gray-600">Earn matching bonuses, retail profits, and leadership rewards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <!-- Password -->
-      <div class="mb-6">
-        <label class="block text-gray-700 font-medium mb-2">
-          Password
-        </label>
-
-        <input
-          type="password"
-          placeholder="Enter your password"
-          class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-700"
-        />
-      </div>
-
-      <!-- Button -->
-      <button
-        type="submit"
-        class="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-xl transition duration-300"
-      >
-        Login
-      </button>
-
-    </form>
+    <!-- CTA Section -->
+    <div class="bg-primary py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Ready to start your own business?</h2>
+            <p class="text-blue-100 mb-10 text-xl font-light">Sign up today and get access to your personalized dashboard, genealogy tree, and e-wallet system instantly.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="../frontend/register.html" class="bg-white text-primary px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-2xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                    <ion-icon name="person-add"></ion-icon> Become a Member
+                </a>
+                <a href="../frontend/index.html" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                    <ion-icon name="log-in"></ion-icon> Login to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <p class="text-center text-gray-500 text-sm mt-6">
-      © 2026 MLM Software Demo
-    </p>
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <ion-icon name="globe-outline" class="text-4xl text-secondary"></ion-icon>
+                        <span class="font-bold text-3xl text-white tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Leading the direct selling industry with premium products and an unmatched binary compensation plan.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-facebook" class="text-xl"></ion-icon></a>
+                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-twitter" class="text-xl"></ion-icon></a>
+                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-instagram" class="text-xl"></ion-icon></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Our Vision</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Management Team</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Business</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Compensation Plan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Return Policy</a></li>
+                    </ul>
+                </div>
 
-  </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="location"></ion-icon></div> 
+                            <span class="text-gray-400 mt-1">123 Business Avenue, Tech Park, City 400001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="call"></ion-icon></div> 
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="mail"></ion-icon></div> 
+                            <span class="text-gray-400">support@nexusmlm.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 font-medium">&copy; 2026 Nexus MLM. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-gray-500 font-medium">
+                    Developed with <ion-icon name="heart" class="text-red-500"></ion-icon> by <span class="text-white">Anshuman Bedanta</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script>
-    function handleLogin(event) {
-      event.preventDefault(); // Prevent actual form submission
-      
-      // Simulate login delay and redirect
-      const btn = event.target.querySelector('button[type="submit"]');
-      btn.innerHTML = 'Logging in...';
-      btn.disabled = true;
-      btn.classList.add('opacity-75', 'cursor-not-allowed');
+    <!-- Script for Mobile Menu -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
 
-      setTimeout(() => {
-        window.location.href = 'dashboard.html';
-      }, 800);
+            function openMenu() {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenuPanel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
 
-      return false;
-    }
-  </script>
+            function closeMenu() {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenuPanel.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+
+            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if(mobileMenu) mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) closeMenu();
+            });
+
+            // Mobile Dropdowns (Accordions)
+            const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
+            dropdownBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('ion-icon');
+                    
+                    // Toggle hidden class
+                    content.classList.toggle('hidden');
+                    content.classList.toggle('flex');
+                    
+                    // Rotate icon
+                    if (content.classList.contains('flex')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
