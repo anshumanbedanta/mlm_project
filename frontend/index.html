@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus MLM - Global Business Opportunity</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -20,20 +21,38 @@
             }
         }
     </script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            animation: pageFadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Smooth transition class added via JS */
+        .page-transitioning {
+            opacity: 0 !important;
+            transform: translateY(-10px) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            pointer-events: none;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navbar -->
@@ -43,77 +62,121 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
                     <ion-icon name="globe-outline" class="text-3xl text-primary"></ion-icon>
-                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span
+                            class="text-secondary">MLM</span></span>
                 </div>
-                
+
                 <!-- Nav Links (Desktop) -->
                 <div class="hidden lg:flex space-x-6 items-center text-sm font-medium text-gray-700 relative z-50">
-                    
+
                     <!-- Categories Dropdown -->
                     <div class="group relative cursor-pointer py-6">
-                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Categories <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
-                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Categories
+                            <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div
+                            class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
                             <ul class="py-2">
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Health Care</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Personal Care</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Agriculture</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Home Care</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Food & Grocery</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Health
+                                        Care</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Personal
+                                        Care</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Agriculture</a>
+                                </li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Home
+                                        Care</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Food &
+                                        Grocery</a></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- Brands Dropdown -->
                     <div class="group relative cursor-pointer py-6">
-                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Brands <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
-                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">Brands <ion-icon
+                                name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div
+                            class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
                             <ul class="py-2">
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Nutricharge</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Good Dot</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Key Soul</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Harit Sanjivani</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Nutricharge</a>
+                                </li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Good
+                                        Dot</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Key
+                                        Soul</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Harit
+                                        Sanjivani</a></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- World of RCM Dropdown -->
                     <div class="group relative cursor-pointer py-6">
-                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">World of RCM <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
-                        <div class="absolute left-0 top-full w-56 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">World of Nexus
+                            <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div
+                            class="absolute left-0 top-full w-56 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
                             <ul class="py-2">
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">About Us</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Business Plan</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Awards & Recognition</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Success Stories</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">About
+                                        Us</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Business
+                                        Plan</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Awards &
+                                        Recognition</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Success
+                                        Stories</a></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- More Dropdown -->
                     <div class="group relative cursor-pointer py-6">
-                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">More <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon></a>
-                        <div class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="#" class="group-hover:text-primary transition flex items-center gap-1">More <ion-icon
+                                name="chevron-down-outline" class="text-xs"></ion-icon></a>
+                        <div
+                            class="absolute left-0 top-full w-48 bg-white shadow-xl border border-gray-100 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
                             <ul class="py-2">
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Contact Us</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Download App</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Store Locator</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Customer Support</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Contact
+                                        Us</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Download
+                                        App</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Store
+                                        Locator</a></li>
+                                <li><a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition">Customer
+                                        Support</a></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
                 <!-- Search Bar -->
                 <div class="hidden md:flex flex-1 max-w-lg mx-4">
                     <div class="relative w-full">
-                        <input type="text" placeholder="Search Product, Categories, Brands etc." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition">
+                        <input type="text" placeholder="Search Product, Categories, Brands etc."
+                            class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition">
                         <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
                             <ion-icon name="search-outline" class="text-lg"></ion-icon>
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Right Actions -->
                 <div class="hidden md:flex items-center space-x-5">
                     <!-- Delivery Location -->
@@ -124,24 +187,27 @@
                             <span class="font-semibold text-gray-800">834001</span>
                         </div>
                     </div>
-                    
+
                     <!-- Language -->
-                    <a href="#" class="hidden lg:flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition">
+                    <a href="#"
+                        class="hidden lg:flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition">
                         EN <ion-icon name="chevron-down-outline" class="text-xs"></ion-icon>
                     </a>
-                    
+
                     <!-- Cart -->
                     <a href="#" class="text-gray-700 hover:text-primary transition relative">
                         <ion-icon name="cart-outline" class="text-2xl"></ion-icon>
-                        <span class="absolute -top-1.5 -right-1.5 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                        <span
+                            class="absolute -top-1.5 -right-1.5 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
                     </a>
-                    
+
                     <!-- Login Button -->
-                    <a href="../frontend/index.html" class="bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full font-medium transition shadow-md shadow-blue-200 text-sm">
+                    <a href="login.html"
+                        class="bg-primary hover:bg-blue-800 text-white px-6 py-2 rounded-full font-medium transition shadow-md shadow-blue-200 text-sm">
                         Sign In
                     </a>
                 </div>
-                
+
                 <!-- Mobile menu button -->
                 <div class="lg:hidden flex items-center gap-4">
                     <a href="#" class="text-gray-700 hover:text-primary transition relative">
@@ -152,11 +218,12 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Mobile Search Bar (shows only on small screens) -->
             <div class="md:hidden pb-4">
                 <div class="relative w-full">
-                    <input type="text" placeholder="Search..." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2 focus:outline-none focus:border-primary">
+                    <input type="text" placeholder="Search..."
+                        class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pl-4 pr-10 py-2 focus:outline-none focus:border-primary">
                     <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
@@ -165,21 +232,26 @@
         </div>
 
         <!-- Mobile Sidebar Menu -->
-        <div id="mobile-menu" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300">
-            <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-opacity duration-300">
+            <div id="mobile-menu-panel"
+                class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
                 <div class="flex items-center justify-between p-4 border-b border-gray-100">
-                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                    <span class="font-bold text-2xl text-primary tracking-tight">Nexus<span
+                            class="text-secondary">MLM</span></span>
                     <button id="close-menu-btn" class="text-gray-500 hover:text-red-500 text-3xl focus:outline-none">
                         <ion-icon name="close-outline"></ion-icon>
                     </button>
                 </div>
-                
+
                 <div class="overflow-y-auto flex-1 p-5">
                     <div class="space-y-4">
                         <!-- Mobile Accordions -->
                         <div class="border-b border-gray-100 pb-2">
-                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
-                                Categories <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            <button
+                                class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                Categories <ion-icon name="chevron-down-outline"
+                                    class="transition-transform duration-300"></ion-icon>
                             </button>
                             <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
                                 <a href="#" class="hover:text-primary">Health Care</a>
@@ -189,10 +261,12 @@
                                 <a href="#" class="hover:text-primary">Food & Grocery</a>
                             </div>
                         </div>
-                        
+
                         <div class="border-b border-gray-100 pb-2">
-                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
-                                Brands <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            <button
+                                class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                Brands <ion-icon name="chevron-down-outline"
+                                    class="transition-transform duration-300"></ion-icon>
                             </button>
                             <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
                                 <a href="#" class="hover:text-primary">Nutricharge</a>
@@ -201,10 +275,12 @@
                                 <a href="#" class="hover:text-primary">Harit Sanjivani</a>
                             </div>
                         </div>
-                        
+
                         <div class="border-b border-gray-100 pb-2">
-                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
-                                World of RCM <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            <button
+                                class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                World of RCM <ion-icon name="chevron-down-outline"
+                                    class="transition-transform duration-300"></ion-icon>
                             </button>
                             <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
                                 <a href="#" class="hover:text-primary">About Us</a>
@@ -215,8 +291,10 @@
                         </div>
 
                         <div class="border-b border-gray-100 pb-2">
-                            <button class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
-                                More <ion-icon name="chevron-down-outline" class="transition-transform duration-300"></ion-icon>
+                            <button
+                                class="flex justify-between items-center w-full font-bold text-gray-800 py-2 mobile-dropdown-btn text-lg">
+                                More <ion-icon name="chevron-down-outline"
+                                    class="transition-transform duration-300"></ion-icon>
                             </button>
                             <div class="hidden flex-col pl-4 space-y-3 mt-3 text-gray-600 font-medium">
                                 <a href="#" class="hover:text-primary">Contact Us</a>
@@ -226,12 +304,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-10 space-y-4">
-                        <a href="../frontend/index.html" class="flex justify-center items-center gap-2 w-full text-center border-2 border-primary text-primary font-bold py-3 rounded-full hover:bg-blue-50 transition text-lg">
+                        <a href="login.html"
+                            class="flex justify-center items-center gap-2 w-full text-center border-2 border-primary text-primary font-bold py-3 rounded-full hover:bg-blue-50 transition text-lg">
                             <ion-icon name="log-in-outline"></ion-icon> Sign In
                         </a>
-                        <a href="../frontend/register.html" class="flex justify-center items-center gap-2 w-full text-center bg-primary text-white font-bold py-3 rounded-full hover:bg-blue-800 shadow-md transition text-lg">
+                        <a href="register.html"
+                            class="flex justify-center items-center gap-2 w-full text-center bg-primary text-white font-bold py-3 rounded-full hover:bg-blue-800 shadow-md transition text-lg">
                             <ion-icon name="person-add-outline"></ion-icon> Join Now
                         </a>
                     </div>
@@ -244,34 +324,40 @@
     <div class="relative bg-white pt-20 overflow-hidden">
         <!-- Abstract background shape -->
         <div class="absolute inset-0 bg-accent transform -skew-y-6 origin-top-left -z-10 h-[120%]"></div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-32 lg:pb-32">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="relative z-10">
-                    <span class="inline-block py-1 px-4 rounded-full bg-blue-100 text-secondary font-bold text-sm mb-6 tracking-wide uppercase">
+                    <span
+                        class="inline-block py-1 px-4 rounded-full bg-blue-100 text-secondary font-bold text-sm mb-6 tracking-wide uppercase">
                         Global Business Opportunity
                     </span>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
                         Transform Your Future With <span class="text-primary">Direct Selling</span>
                     </h1>
                     <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                        Join a community of thousands of successful entrepreneurs. Premium health & wellness products combined with a highly rewarding compensation plan.
+                        Join a community of thousands of successful entrepreneurs. Premium health & wellness products
+                        combined with a highly rewarding compensation plan.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="../frontend/register.html" class="bg-primary hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold transition shadow-xl shadow-blue-300 flex items-center gap-2 hover:-translate-y-1">
+                        <a href="register.html"
+                            class="bg-primary hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold transition shadow-xl shadow-blue-300 flex items-center gap-2 hover:-translate-y-1">
                             Start Your Journey <ion-icon name="arrow-forward-outline"></ion-icon>
                         </a>
-                        <a href="#business" class="bg-white border-2 border-primary text-primary hover:bg-accent px-8 py-4 rounded-full font-bold transition hover:-translate-y-1">
+                        <a href="#business"
+                            class="bg-white border-2 border-primary text-primary hover:bg-accent px-8 py-4 rounded-full font-bold transition hover:-translate-y-1">
                             View Business Plan
                         </a>
                     </div>
                 </div>
                 <div class="relative z-10">
                     <!-- Hero Image -->
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Business Meeting" class="rounded-3xl shadow-2xl relative z-10 border-4 border-white">
-                    
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        alt="Business Meeting" class="rounded-3xl shadow-2xl relative z-10 border-4 border-white">
+
                     <!-- Floating Stat Badge -->
-                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-gray-100 animate-bounce" style="animation-duration: 3s;">
+                    <div class="absolute -bottom-4 left-4 md:-bottom-8 md:-left-8 bg-white p-4 md:p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-gray-100 animate-bounce"
+                        style="animation-duration: 3s;">
                         <div class="bg-green-100 p-4 rounded-full text-green-600">
                             <ion-icon name="trending-up" class="text-3xl"></ion-icon>
                         </div>
@@ -292,34 +378,45 @@
                 <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Why Choose Us</h2>
                 <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">The Ultimate Business Platform</h3>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
-                    <div class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
+                <div
+                    class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
+                    <div
+                        class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
                         <ion-icon name="shield-checkmark-outline" class="text-3xl"></ion-icon>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">Premium Quality Products</h4>
-                    <p class="text-gray-600 leading-relaxed">Our products go through rigorous quality checks to ensure you offer only the best to your customers and downlines.</p>
+                    <p class="text-gray-600 leading-relaxed">Our products go through rigorous quality checks to ensure
+                        you offer only the best to your customers and downlines.</p>
                 </div>
-                
+
                 <!-- Feature 2 -->
-                <div class="bg-primary p-10 rounded-3xl hover:-translate-y-2 transition duration-300 text-white shadow-2xl shadow-blue-900/20 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl"></div>
-                    <div class="bg-white/10 backdrop-blur w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner mb-6 text-white border border-white/20">
+                <div
+                    class="bg-primary p-10 rounded-3xl hover:-translate-y-2 transition duration-300 text-white shadow-2xl shadow-blue-900/20 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl">
+                    </div>
+                    <div
+                        class="bg-white/10 backdrop-blur w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner mb-6 text-white border border-white/20">
                         <ion-icon name="cash-outline" class="text-3xl"></ion-icon>
                     </div>
                     <h4 class="text-xl font-bold mb-3">High Commission Payouts</h4>
-                    <p class="text-blue-100 leading-relaxed">Enjoy one of the most lucrative binary compensation plans in the industry with instant e-wallet withdrawals to your bank.</p>
+                    <p class="text-blue-100 leading-relaxed">Enjoy one of the most lucrative binary compensation plans
+                        in the industry with instant e-wallet withdrawals to your bank.</p>
                 </div>
-                
+
                 <!-- Feature 3 -->
-                <div class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
-                    <div class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
+                <div
+                    class="bg-accent p-10 rounded-3xl hover:-translate-y-2 transition duration-300 border border-blue-100">
+                    <div
+                        class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-6 text-secondary">
                         <ion-icon name="school-outline" class="text-3xl"></ion-icon>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">Training & Support</h4>
-                    <p class="text-gray-600 leading-relaxed">Access exclusive seminars, leadership training, and a dedicated admin dashboard to monitor and grow your network effectively.</p>
+                    <p class="text-gray-600 leading-relaxed">Access exclusive seminars, leadership training, and a
+                        dedicated admin dashboard to monitor and grow your network effectively.</p>
                 </div>
             </div>
         </div>
@@ -330,46 +427,63 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Categories</h2>
             <p class="text-gray-500 mb-12">Find Exactly What You Need.</p>
-            
+
             <div class="flex flex-wrap justify-center gap-8 md:gap-16">
                 <!-- Category 1 -->
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-green-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
-                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Health Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-green-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                            alt="Health Care"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Health Care</span>
                 </a>
-                
+
                 <!-- Category 2 -->
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
-                        <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Personal Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-blue-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                            alt="Personal Care"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Personal Care</span>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Personal
+                        Care</span>
                 </a>
-                
+
                 <!-- Category 3 -->
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-orange-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
-                        <img src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Agriculture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-orange-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                            alt="Agriculture"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Agriculture</span>
                 </a>
-                
+
                 <!-- Category 4 -->
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-pink-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
-                        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Home Care" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-pink-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                            alt="Home Care"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Home Care</span>
                 </a>
-                
+
                 <!-- Category 5 -->
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-purple-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
-                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Food & Grocery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-purple-50 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-4 border-white mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                            alt="Food & Grocery"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Food & Grocery</span>
+                    <span class="font-bold text-gray-800 group-hover:text-primary transition-colors">Food &
+                        Grocery</span>
                 </a>
             </div>
         </div>
@@ -383,17 +497,23 @@
                     <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Our Catalog</h2>
                     <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">Health & Wellness Range</h3>
                 </div>
-                <a href="#" class="text-primary font-bold hover:text-secondary transition flex items-center gap-1 mt-4 md:mt-0 text-lg">
+                <a href="#"
+                    class="text-primary font-bold hover:text-secondary transition flex items-center gap-1 mt-4 md:mt-0 text-lg">
                     View All Products <ion-icon name="arrow-forward"></ion-icon>
                 </a>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Product 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
                     <div class="h-64 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1550572017-edb7e28d85f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute top-4 right-4 bg-primary text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">New Arrival</div>
+                        <img src="https://images.unsplash.com/photo-1550572017-edb7e28d85f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-primary text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">
+                            New Arrival</div>
                     </div>
                     <div class="p-6">
                         <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Nutrition</p>
@@ -407,11 +527,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
                     <div class="h-64 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
                         <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Skincare</p>
@@ -424,10 +547,15 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
                     <div class="h-64 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5e468305c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">Best Seller</div>
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5e468305c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-yellow-500 text-white text-xs font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md">
+                            Best Seller</div>
                     </div>
                     <div class="p-6">
                         <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Supplements</p>
@@ -440,9 +568,12 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group border border-gray-100">
                     <div class="h-64 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
                         <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Wellness</p>
@@ -464,11 +595,12 @@
                 <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">How It Works</h2>
                 <h3 class="text-3xl md:text-5xl font-extrabold text-gray-900">Simple Steps to Financial Freedom</h3>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Step 1 -->
                 <div class="text-center relative group">
-                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
                         <ion-icon name="person-add-outline"></ion-icon>
                     </div>
                     <!-- Connector line (hidden on mobile) -->
@@ -476,30 +608,33 @@
                     <h4 class="font-bold text-xl mb-2 text-gray-900">1. Register</h4>
                     <p class="text-gray-600">Join our network for free using a valid sponsor ID.</p>
                 </div>
-                
+
                 <!-- Step 2 -->
                 <div class="text-center relative group">
-                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
                         <ion-icon name="cart-outline"></ion-icon>
                     </div>
                     <div class="hidden md:block absolute top-12 left-[60%] w-[80%] h-1 bg-blue-100 -z-0"></div>
                     <h4 class="font-bold text-xl mb-2 text-gray-900">2. Purchase</h4>
                     <p class="text-gray-600">Buy daily use products and accumulate Business Volume (BV).</p>
                 </div>
-                
+
                 <!-- Step 3 -->
                 <div class="text-center relative group">
-                    <div class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-accent rounded-full flex items-center justify-center text-primary text-4xl mb-6 shadow-lg border-4 border-white relative z-10 group-hover:bg-primary group-hover:text-white transition duration-300">
                         <ion-icon name="share-social-outline"></ion-icon>
                     </div>
                     <div class="hidden md:block absolute top-12 left-[60%] w-[80%] h-1 bg-blue-100 -z-0"></div>
                     <h4 class="font-bold text-xl mb-2 text-gray-900">3. Recommend</h4>
                     <p class="text-gray-600">Share products with friends and build your binary tree.</p>
                 </div>
-                
+
                 <!-- Step 4 -->
                 <div class="text-center relative group">
-                    <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center text-white text-4xl mb-6 shadow-xl shadow-blue-200 border-4 border-white relative z-10 group-hover:scale-110 transition duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center text-white text-4xl mb-6 shadow-xl shadow-blue-200 border-4 border-white relative z-10 group-hover:scale-110 transition duration-300">
                         <ion-icon name="wallet-outline"></ion-icon>
                     </div>
                     <h4 class="font-bold text-xl mb-2 text-gray-900">4. Earn</h4>
@@ -511,15 +646,20 @@
 
     <!-- CTA Section -->
     <div class="bg-primary py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-10">
+        </div>
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Ready to start your own business?</h2>
-            <p class="text-blue-100 mb-10 text-xl font-light">Sign up today and get access to your personalized dashboard, genealogy tree, and e-wallet system instantly.</p>
+            <p class="text-blue-100 mb-10 text-xl font-light">Sign up today and get access to your personalized
+                dashboard, genealogy tree, and e-wallet system instantly.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="../frontend/register.html" class="bg-white text-primary px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-2xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                <a href="register.html"
+                    class="bg-white text-primary px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-2xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
                     <ion-icon name="person-add"></ion-icon> Become a Member
                 </a>
-                <a href="../frontend/index.html" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                <a href="login.html"
+                    class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
                     <ion-icon name="log-in"></ion-icon> Login to Dashboard
                 </a>
             </div>
@@ -533,33 +673,57 @@
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2 mb-6">
                         <ion-icon name="globe-outline" class="text-4xl text-secondary"></ion-icon>
-                        <span class="font-bold text-3xl text-white tracking-tight">Nexus<span class="text-secondary">MLM</span></span>
+                        <span class="font-bold text-3xl text-white tracking-tight">Nexus<span
+                                class="text-secondary">MLM</span></span>
                     </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Leading the direct selling industry with premium products and an unmatched binary compensation plan.</p>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Leading the direct selling industry with premium
+                        products and an unmatched binary compensation plan.</p>
                     <div class="flex gap-4">
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-facebook" class="text-xl"></ion-icon></a>
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-twitter" class="text-xl"></ion-icon></a>
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon name="logo-instagram" class="text-xl"></ion-icon></a>
+                        <a href="#"
+                            class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon
+                                name="logo-facebook" class="text-xl"></ion-icon></a>
+                        <a href="#"
+                            class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon
+                                name="logo-twitter" class="text-xl"></ion-icon></a>
+                        <a href="#"
+                            class="bg-gray-800 p-3 rounded-full hover:bg-secondary hover:text-white transition"><ion-icon
+                                name="logo-instagram" class="text-xl"></ion-icon></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Company</h4>
                     <ul class="space-y-4">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Our Vision</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Management Team</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Careers</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> About Us</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Our Vision</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Management Team</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Careers</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Business</h4>
                     <ul class="space-y-4">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Compensation Plan</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Terms & Conditions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon name="chevron-forward"></ion-icon> Return Policy</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Compensation Plan</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Terms & Conditions</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Privacy Policy</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><ion-icon
+                                    name="chevron-forward"></ion-icon> Return Policy</a></li>
                     </ul>
                 </div>
 
@@ -567,25 +731,29 @@
                     <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Contact Us</h4>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
-                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="location"></ion-icon></div> 
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="location"></ion-icon>
+                            </div>
                             <span class="text-gray-400 mt-1">123 Business Avenue, Tech Park, City 400001</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="call"></ion-icon></div> 
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="call"></ion-icon>
+                            </div>
                             <span class="text-gray-400">+91 98765 43210</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="mail"></ion-icon></div> 
+                            <div class="bg-gray-800 p-2 rounded-lg text-secondary"><ion-icon name="mail"></ion-icon>
+                            </div>
                             <span class="text-gray-400">support@nexusmlm.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-gray-500 font-medium">&copy; 2026 Nexus MLM. All rights reserved.</p>
                 <div class="flex items-center gap-2 text-gray-500 font-medium">
-                    Developed with <ion-icon name="heart" class="text-red-500"></ion-icon> by <span class="text-white">Anshuman Bedanta</span>
+                    Developed with <ion-icon name="heart" class="text-red-500"></ion-icon> by <span
+                        class="text-white">Anshuman Bedanta</span>
                 </div>
             </div>
         </div>
@@ -612,9 +780,9 @@
                 document.body.style.overflow = '';
             }
 
-            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
-            if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
-            if(mobileMenu) mobileMenu.addEventListener('click', (e) => {
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (mobileMenu) mobileMenu.addEventListener('click', (e) => {
                 if (e.target === mobileMenu) closeMenu();
             });
 
@@ -624,11 +792,11 @@
                 btn.addEventListener('click', () => {
                     const content = btn.nextElementSibling;
                     const icon = btn.querySelector('ion-icon');
-                    
+
                     // Toggle hidden class
                     content.classList.toggle('hidden');
                     content.classList.toggle('flex');
-                    
+
                     // Rotate icon
                     if (content.classList.contains('flex')) {
                         icon.style.transform = 'rotate(180deg)';
@@ -637,7 +805,21 @@
                     }
                 });
             });
+
+            // Smooth Page Transitions
+            document.querySelectorAll('a[href="login.html"], a[href="register.html"]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetUrl = this.getAttribute('href');
+                    document.body.classList.add('page-transitioning');
+                    
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 400); // Wait for transition duration
+                });
+            });
         });
     </script>
 </body>
+
 </html>

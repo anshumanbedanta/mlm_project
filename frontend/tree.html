@@ -549,6 +549,62 @@
 
             .tree-header-actions {
                 flex-direction: column;
+                width: 100%;
+            }
+            
+            .tree-search {
+                width: 100%;
+            }
+
+            /* Tree Mobile Optimizations */
+            .tree-wrapper {
+                padding: 20px 10px;
+                justify-content: flex-start; /* Fixes left-side cut-off caused by center alignment */
+                border-radius: 16px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tree {
+                margin: 0 auto; /* Keeps it centered if smaller than screen, scrollable if larger */
+            }
+
+            .tree li {
+                padding: 20px 4px 0 4px; /* Tighter horizontal grouping */
+            }
+
+            .tree-node {
+                min-width: 110px;
+                padding: 12px 8px;
+                border-radius: 16px;
+            }
+
+            .tree-node .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .tree-node .name {
+                font-size: 12px;
+                white-space: normal; /* Allow text wrapping on mobile */
+                text-align: center;
+                line-height: 1.2;
+            }
+
+            .tree-node .id {
+                font-size: 10px;
+            }
+            
+            .tree-node .status {
+                margin-top: 8px;
+                padding: 3px 8px;
+                font-size: 9px;
+            }
+            
+            /* Hide tooltips on mobile to prevent accidental screen block */
+            .tree-node::before {
+                display: none;
             }
         }
     </style>
